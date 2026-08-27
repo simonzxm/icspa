@@ -1,4 +1,4 @@
-.PHONY: nemu run run-kernel debug game clean test_pa-1 test_pa-2-1 test_pa-2-2 test_pa-2-3 test_pa-3-1 test_pa-3-2 test_pa-3-3 test_pa-4-1 test_pa-4-2 test_pa-4-3 submit_pa-1 submit_pa-2-1 submit_pa-2-2 submit_pa-2-3 submit_pa-3-1 submit_pa-3-2 submit_pa-3-3 submit_pa-4-1 submit_pa-4-2 submit_pa-4-3 test_batch-2-2-mute test_batch-3-3-mute
+.PHONY: nemu run run-kernel debug game clean format test_pa-1 test_pa-2-1 test_pa-2-2 test_pa-2-3 test_pa-3-1 test_pa-3-2 test_pa-3-3 test_pa-4-1 test_pa-4-2 test_pa-4-3 submit_pa-1 submit_pa-2-1 submit_pa-2-2 submit_pa-2-3 submit_pa-3-1 submit_pa-3-2 submit_pa-3-3 submit_pa-4-1 submit_pa-4-2 submit_pa-4-3 test_batch-2-2-mute test_batch-3-3-mute
 
 include Makefile.git
 
@@ -32,6 +32,10 @@ clean:
 	cd game && make clean
 	cd testcase && make clean
 	cd kernel && make clean
+
+format:
+	find . \( -path './libs' -o -path './.git' \) -prune -o \
+		\( -name '*.c' -o -name '*.h' \) -print0 | xargs -0 clang-format -i
 
 # local tests to different stages of PA
 
@@ -237,4 +241,3 @@ test_batch-3-3-mute:
 	./nemu/nemu --autorun --testcase string --kernel
 	./nemu/nemu --autorun --testcase hello-str  --kernel
 	./nemu/nemu --autorun --testcase test-float --kernel
-
