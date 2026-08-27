@@ -1,11 +1,11 @@
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
 
-#include "nemu.h"
 #include "memory/mmu/cache.h"
-#include "memory/mmu/tlb.h"
-#include "memory/mmu/segment.h"
 #include "memory/mmu/page.h"
+#include "memory/mmu/segment.h"
+#include "memory/mmu/tlb.h"
+#include "nemu.h"
 
 // 1MB memory
 #define MEM_SIZE_B 128 * 1024 * 1024
@@ -40,7 +40,7 @@ void init_mem();
 uint32_t instr_fetch(vaddr_t vaddr, size_t len);
 
 // print memory start from physical address addr and size len bytes
-//void mem_print(uint32_t addr, size_t len);
+// void mem_print(uint32_t addr, size_t len);
 uint8_t *get_mem_addr();
 
 #endif

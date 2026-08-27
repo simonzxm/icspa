@@ -49,10 +49,7 @@ extern int optopt;
 extern int optreset;
 extern char *optarg;
 
-int getopt(
-    int nargc,
-    char *const *nargv,
-    const char *ostr);
+int getopt(int nargc, char *const *nargv, const char *ostr);
 
 #ifdef __cplusplus
 }

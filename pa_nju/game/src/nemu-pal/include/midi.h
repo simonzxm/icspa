@@ -30,13 +30,9 @@ extern "C" {
 
 #include "native_midi/native_midi.h"
 
-VOID MIDI_Play(
-    INT iNumRIX,
-    BOOL fLoop);
+VOID MIDI_Play(INT iNumRIX, BOOL fLoop);
 
-VOID
-    MIDI_CheckLoop(
-        VOID);
+VOID MIDI_CheckLoop(VOID);
 
 #ifdef __cplusplus
 }

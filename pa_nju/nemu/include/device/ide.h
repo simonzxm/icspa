@@ -1,12 +1,12 @@
 #ifndef __HARD_DISK_H__
 #define __HARD_DISK_H__
 
-#include "nemu.h"
 #include "device/port_io.h"
+#include "nemu.h"
 
 #define IDE_PORT_BASE 0x1F0
 
-//#define BMR_PORT_BASE 0xc040
+// #define BMR_PORT_BASE 0xc040
 
 #define IDE_IRQ 14
 

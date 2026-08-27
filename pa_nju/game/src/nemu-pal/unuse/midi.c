@@ -23,9 +23,7 @@
 
 #if !defined(CYGWIN) && !defined(DINGOO) && !defined(GEKKO) && !defined(GPH)
 
-VOID MIDI_Play(
-    INT iNumRIX,
-    BOOL fLoop)
+VOID MIDI_Play(INT iNumRIX, BOOL fLoop)
 /*++
   Purpose:
 
@@ -43,14 +41,11 @@ VOID MIDI_Play(
 
 --*/
 {
-  return;
+    return;
 }
 
-VOID
-    MIDI_CheckLoop(
-        VOID)
-{
-  return;
+VOID MIDI_CheckLoop(VOID) {
+    return;
 }
 
 #endif

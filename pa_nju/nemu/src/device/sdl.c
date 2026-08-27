@@ -1,11 +1,12 @@
-#include "nemu.h"
-#include "device/vga.h"
 #include "device/audio.h"
-#include "device/timer.h"
 #include "device/keyboard.h"
+#include "device/timer.h"
+#include "device/vga.h"
+#include "nemu.h"
 #include <SDL/SDL.h>
 
-#if defined(HAS_DEVICE_TIMER) || defined(HAS_DEVICE_VGA) || defined(HAS_DEVICE_KEYBOARD) || defined(HAS_DEVICE_AUDIO)
+#if defined(HAS_DEVICE_TIMER) || defined(HAS_DEVICE_VGA) ||                    \
+    defined(HAS_DEVICE_KEYBOARD) || defined(HAS_DEVICE_AUDIO)
 
 #ifdef HAS_DEVICE_VGA
 extern uint8_t fontdata_8x16[128][16];
@@ -19,66 +20,67 @@ SDL_Surface *real_screen;
 static bool initialized = false;
 
 #if defined(HAS_DEVICE_VGA) || defined(HAS_DEVICE_KEYBOARD)
-static void init_sdl_window()
-{
+static void init_sdl_window() {
 #ifdef HAS_DEVICE_AUDIO
 
 #ifndef PA_ONLINE
-	int ret = SDL_Init(SDL_INIT_AUDIO | SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE); // when using local SDL for audio playback
+    int ret = SDL_Init(
+        SDL_INIT_AUDIO | SDL_INIT_TIMER | SDL_INIT_VIDEO |
+        SDL_INIT_NOPARACHUTE); // when using local SDL for audio playback
 #else
-	int ret = SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
+    int ret = SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 #endif
 
 #else
-	int ret = SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
+    int ret = SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 #endif
-	fflush(stdout);
-	assert(ret == 0);
-	real_screen = SDL_SetVideoMode(640, 400, 8,
-								   SDL_HWSURFACE | SDL_HWPALETTE | SDL_HWACCEL | SDL_ASYNCBLIT);
+    fflush(stdout);
+    assert(ret == 0);
+    real_screen = SDL_SetVideoMode(640, 400, 8,
+                                   SDL_HWSURFACE | SDL_HWPALETTE | SDL_HWACCEL |
+                                       SDL_ASYNCBLIT);
 
 #ifdef HAS_DEVICE_VGA
-	screen = SDL_CreateRGBSurface(SDL_SWSURFACE, 640, 400, 8,
-								  real_screen->format->Rmask, real_screen->format->Gmask,
-								  real_screen->format->Bmask, real_screen->format->Amask);
-	pixel_buf = screen->pixels;
+    screen = SDL_CreateRGBSurface(
+        SDL_SWSURFACE, 640, 400, 8, real_screen->format->Rmask,
+        real_screen->format->Gmask, real_screen->format->Bmask,
+        real_screen->format->Amask);
+    pixel_buf = screen->pixels;
 
-	SDL_SetPalette(real_screen, SDL_LOGPAL | SDL_PHYSPAL, (void *)&palette, 0, 256);
-	SDL_SetPalette(screen, SDL_LOGPAL, (void *)&palette, 0, 256);
+    SDL_SetPalette(real_screen, SDL_LOGPAL | SDL_PHYSPAL, (void *)&palette, 0,
+                   256);
+    SDL_SetPalette(screen, SDL_LOGPAL, (void *)&palette, 0, 256);
 #endif
-	SDL_WM_SetCaption("NEMU v3.3", NULL);
-	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
+    SDL_WM_SetCaption("NEMU v3.3", NULL);
+    SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 }
 #endif
 
-void close_sdl()
-{
-	if (initialized)
-	{
-		initialized = false;
+void close_sdl() {
+    if (initialized) {
+        initialized = false;
 #ifdef HAS_DEVICE_TIMER
-		timer_stop();
+        timer_stop();
 #endif
 
 #ifdef HAS_DEVICE_KEYBOARD
-		keyboard_stop();
+        keyboard_stop();
 #endif
 
 #ifdef HAS_DEVICE_VGA
-		vga_close();
+        vga_close();
 #endif
 
 #ifdef HAS_DEVICE_AUDIO
-		audio_stop();
+        audio_stop();
 #endif
 
 #if defined(HAS_DEVICE_VGA) || defined(HAS_DEVICE_KEYBOARD)
-		//Destroy the various items
-		SDL_Quit();
+        // Destroy the various items
+        SDL_Quit();
 #endif
-	}
+    }
 }
-
 
 #ifdef HAS_DEVICE_TIMER
 void do_timer();
@@ -89,45 +91,42 @@ void do_keyboard();
 #ifdef HAS_DEVICE_VGA
 void do_vga();
 #endif
-void do_devices()
-{
+void do_devices() {
 #ifdef HAS_DEVICE_TIMER
-	do_timer();
+    do_timer();
 #endif
 #ifdef HAS_DEVICE_KEYBOARD
-	do_keyboard();
+    do_keyboard();
 #endif
 #ifdef HAS_DEVICE_VGA
-	do_vga();
+    do_vga();
 #endif
 }
 
-void init_sdl()
-{
-	if (!initialized)
-	{
+void init_sdl() {
+    if (!initialized) {
 #ifdef HAS_DEVICE_TIMER
-		timer_start(100); // start timer
+        timer_start(100); // start timer
 #endif
 
 #if defined(HAS_DEVICE_VGA) || defined(HAS_DEVICE_KEYBOARD)
-		init_sdl_window();
+        init_sdl_window();
 
 #ifdef HAS_DEVICE_KEYBOARD
-		keyboard_start(); // start keyboard
+        keyboard_start(); // start keyboard
 #endif
 
 #ifdef HAS_DEVICE_VGA
-		vga_init(); // init vga
+        vga_init(); // init vga
 #endif
 
 #endif
 
 #ifdef HAS_DEVICE_AUDIO
-		audio_start();
+        audio_start();
 #endif
 
-		initialized = true;
-	}
+        initialized = true;
+    }
 }
 #endif

@@ -28,11 +28,7 @@ extern "C" {
 
 #include "_common.h"
 
-VOID PAL_RNGPlay(
-    INT iNumRNG,
-    INT iStartFrame,
-    INT iNumFrames,
-    INT iSpeed);
+VOID PAL_RNGPlay(INT iNumRNG, INT iStartFrame, INT iNumFrames, INT iSpeed);
 
 #ifdef __cplusplus
 }

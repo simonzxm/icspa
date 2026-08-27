@@ -5,39 +5,28 @@
 
 #define INT3_CODE 0xf1
 
-enum
-{
-	IDLE,
-	HIT,
-	RE_EXEC
-};
+enum { IDLE, HIT, RE_EXEC };
 
-enum
-{
-	BREAKPOINT,
-	WATCHPOINT
-};
+enum { BREAKPOINT, WATCHPOINT };
 
-typedef struct breakpoint
-{
-	uint8_t ori_byte : 8;
-	bool enable : 1;
-	bool in_use : 1;
-	int NO : 22;
+typedef struct breakpoint {
+    uint8_t ori_byte : 8;
+    bool enable : 1;
+    bool in_use : 1;
+    int NO : 22;
 
-	union {
-		vaddr_t addr;
-		struct
-		{
-			char *expr;
-			uint32_t old_val;
-			uint32_t new_val;
-		};
-	};
-	int type;
-	struct breakpoint *next;
+    union {
+        vaddr_t addr;
+        struct {
+            char *expr;
+            uint32_t old_val;
+            uint32_t new_val;
+        };
+    };
+    int type;
+    struct breakpoint *next;
 
-	/* TODO: Add more member if necessary */
+    /* TODO: Add more member if necessary */
 
 } BP;
 

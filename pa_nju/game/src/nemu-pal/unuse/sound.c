@@ -19,9 +19,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "palcommon.h"
-#include "_common.h"
 #include "sound.h"
+#include "_common.h"
+#include "palcommon.h"
 #include "rixplay.h"
 #include "util.h"
 
@@ -48,9 +48,7 @@ INT g_iVolume = SDL_MIX_MAXVOLUME * 0.1;
 int g_iCurrChannel = 0;
 #endif
 
-INT
-    SOUND_OpenAudio(
-        VOID)
+INT SOUND_OpenAudio(VOID)
 /*++
   Purpose:
 
@@ -66,12 +64,10 @@ INT
 
 --*/
 {
-  return 0;
+    return 0;
 }
 
-VOID
-    SOUND_CloseAudio(
-        VOID)
+VOID SOUND_CloseAudio(VOID)
 /*++
   Purpose:
 
@@ -87,12 +83,10 @@ VOID
 
 --*/
 {
-  return;
+    return;
 }
 
-VOID SOUND_PlayChannel(
-    INT iSoundNum,
-    INT iChannel)
+VOID SOUND_PlayChannel(INT iSoundNum, INT iChannel)
 /*++
   Purpose:
 
@@ -110,19 +104,14 @@ VOID SOUND_PlayChannel(
 
 --*/
 {
-  return;
+    return;
 }
 
-VOID PAL_PlayMUS(
-    INT iNumRIX,
-    BOOL fLoop,
-    float flFadeTime)
-{
-  return;
+VOID PAL_PlayMUS(INT iNumRIX, BOOL fLoop, float flFadeTime) {
+    return;
 }
 
-BOOL SOUND_PlayCDA(
-    INT iNumTrack)
+BOOL SOUND_PlayCDA(INT iNumTrack)
 /*++
   Purpose:
 
@@ -138,5 +127,5 @@ BOOL SOUND_PlayCDA(
 
 --*/
 {
-  return FALSE;
+    return FALSE;
 }

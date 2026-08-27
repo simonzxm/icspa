@@ -26,16 +26,12 @@
 extern "C" {
 #endif
 
-WORD
-    PAL_ItemSelectMenuUpdate(
-        VOID);
+WORD PAL_ItemSelectMenuUpdate(VOID);
 
-VOID PAL_ItemSelectMenuInit(
-    WORD wItemFlags);
+VOID PAL_ItemSelectMenuInit(WORD wItemFlags);
 
-WORD PAL_ItemSelectMenu(
-    LPITEMCHANGED_CALLBACK lpfnMenuItemChanged,
-    WORD wItemFlags);
+WORD PAL_ItemSelectMenu(LPITEMCHANGED_CALLBACK lpfnMenuItemChanged,
+                        WORD wItemFlags);
 
 #ifdef __cplusplus
 }

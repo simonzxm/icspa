@@ -1,8 +1,8 @@
 #ifndef __AUDIO_H__
 #define __AUDIO_H__
 
-#include "nemu.h"
 #include "device/port_io.h"
+#include "nemu.h"
 
 #include <SDL/SDL.h>
 
@@ -16,4 +16,3 @@ void audio_start();
 void audio_stop();
 
 #endif
-

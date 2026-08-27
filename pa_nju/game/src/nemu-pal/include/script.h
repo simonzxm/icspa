@@ -26,13 +26,9 @@
 extern "C" {
 #endif
 
-WORD PAL_RunTriggerScript(
-    WORD wScriptEntry,
-    WORD wEventObjectID);
+WORD PAL_RunTriggerScript(WORD wScriptEntry, WORD wEventObjectID);
 
-WORD PAL_RunAutoScript(
-    WORD wScriptEntry,
-    WORD wEventObjectID);
+WORD PAL_RunAutoScript(WORD wScriptEntry, WORD wEventObjectID);
 
 extern BOOL g_fScriptSuccess;
 

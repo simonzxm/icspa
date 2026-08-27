@@ -1,6 +1,5 @@
-#include "common.h"
 #include "adt/linklist.h"
-
+#include "common.h"
 
 #define HZ 100
 

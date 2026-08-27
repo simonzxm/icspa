@@ -1,5 +1,5 @@
-#include "cpu/intr.h"
 #include "cpu/instr.h"
+#include "cpu/intr.h"
 
 /*
 Put the implementations of `int' instructions here.

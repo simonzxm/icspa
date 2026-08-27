@@ -1,8 +1,6 @@
 #include "sound.h"
 
-VOID RIX_FillBuffer(
-    LPBYTE stream,
-    INT len)
+VOID RIX_FillBuffer(LPBYTE stream, INT len)
 /*++
   Purpose:
 
@@ -21,11 +19,10 @@ VOID RIX_FillBuffer(
 
 --*/
 {
-  return;
+    return;
 }
 
-INT RIX_Init(
-    LPCSTR szFileName)
+INT RIX_Init(LPCSTR szFileName)
 /*++
   Purpose:
 
@@ -41,12 +38,10 @@ INT RIX_Init(
 
 --*/
 {
-  return 0;
+    return 0;
 }
 
-VOID
-    RIX_Shutdown(
-        VOID)
+VOID RIX_Shutdown(VOID)
 /*++
   Purpose:
 
@@ -62,13 +57,10 @@ VOID
 
 --*/
 {
-  return;
+    return;
 }
 
-VOID RIX_Play(
-    INT iNumRIX,
-    BOOL fLoop,
-    float flFadeTime)
+VOID RIX_Play(INT iNumRIX, BOOL fLoop, float flFadeTime)
 /*++
   Purpose:
 
@@ -88,5 +80,5 @@ VOID RIX_Play(
 
 --*/
 {
-  return;
+    return;
 }

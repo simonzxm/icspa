@@ -4,8 +4,7 @@
  * Without it, errors will be reported during linking.
  * But the execution flow should not reach here.
  */
-void *sbrk(int incr)
-{
-	assert(0);
-	return NULL;
+void *sbrk(int incr) {
+    assert(0);
+    return NULL;
 }

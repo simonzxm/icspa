@@ -21,8 +21,8 @@
 #ifndef _COMMON_H
 #define _COMMON_H
 
-//#define PAL_WIN95          1 // not valid for now
-//#define PAL_CLASSIC        1
+// #define PAL_WIN95          1 // not valid for now
+// #define PAL_CLASSIC        1
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,18 +30,18 @@ extern "C" {
 
 #include "common.h"
 
+#include <limits.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <limits.h>
-#include <stdarg.h>
-//#include <assert.h>
+// #include <assert.h>
 
-//#include "SDL.h"
-//#include "SDL_endian.h"
+// #include "SDL.h"
+// #include "SDL_endian.h"
 #include "hal.h"
-//#include "FLOAT.h"
+// #include "FLOAT.h"
 
 #ifdef _SDL_stdinc_h
 #define malloc SDL_malloc
@@ -132,14 +132,15 @@ FILE *MY_fopen(const char *path, const char *mode);
 
 #else
 
-//#	define PAL_HAS_JOYSTICKS     1
+// #	define PAL_HAS_JOYSTICKS     1
 #ifndef _WIN32_WCE
 #if SDL_MAJOR_VERSION == 1 && SDL_MINOR_VERSION <= 2
 #define PAL_ALLOW_KEYREPEAT 1
 #define PAL_HAS_CD 1
 #endif
-#if !defined(CYGWIN) && !defined(DINGOO) && !defined(GPH) && !defined(GEKKO) && !defined(__WINPHONE__)
-//#			define PAL_HAS_MP3           1
+#if !defined(CYGWIN) && !defined(DINGOO) && !defined(GPH) &&                   \
+    !defined(GEKKO) && !defined(__WINPHONE__)
+// #			define PAL_HAS_MP3           1
 #endif
 #endif
 #ifndef PAL_PREFIX

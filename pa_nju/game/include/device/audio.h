@@ -7,10 +7,9 @@
 #define AUDIO_DATA 0xc0
 #define AUDIO_CTL 0xc1
 
-typedef struct
-{
-	uint32_t len; // in bytes
-	uint8_t pcm_buffer[PCM_BUF_SIZE];
+typedef struct {
+    uint32_t len; // in bytes
+    uint8_t pcm_buffer[PCM_BUF_SIZE];
 } Audio_Data;
 
 void audio_pause(int);

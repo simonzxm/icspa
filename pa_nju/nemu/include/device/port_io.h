@@ -4,7 +4,8 @@
 #include "nemu.h"
 
 // macro for making a port io handler
-#define make_pio_handler(name) void name(uint16_t port, size_t len, bool is_write)
+#define make_pio_handler(name)                                                 \
+    void name(uint16_t port, size_t len, bool is_write)
 
 // port io handler
 typedef void (*pio_handler)(uint16_t port, size_t len, bool is_write);

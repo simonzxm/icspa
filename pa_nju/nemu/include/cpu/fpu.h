@@ -15,11 +15,10 @@ extern CPU_STATE cpu;
 #define P_NAN_F 0X7fc00000
 #define N_NAN_F 0Xffc00000
 
-typedef struct
-{
-	uint32_t a;
-	uint32_t b;
-	uint32_t res;
+typedef struct {
+    uint32_t a;
+    uint32_t b;
+    uint32_t res;
 } CORNER_CASE_RULE;
 
 void fpu_load(uint32_t val);
@@ -47,5 +46,5 @@ uint32_t internal_float_div(uint32_t b, uint32_t a);
 
 uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs);
 
-//void fpu_test();
+// void fpu_test();
 #endif

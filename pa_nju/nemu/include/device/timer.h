@@ -1,8 +1,8 @@
 #ifndef __TIMER_H__
 #define __TIMER_H__
 
-#include "nemu.h"
 #include "device/port_io.h"
+#include "nemu.h"
 
 #define TIMER_PORT 0X40
 #define TIMER_IRQ 0x0

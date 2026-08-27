@@ -38,9 +38,7 @@ BOOL g_fUseJoystick = TRUE;
 unsigned int g_uiLastBackKeyTime = 0;
 #endif
 
-static VOID
-PAL_KeyPressHandler(
-	int keycode)
+static VOID PAL_KeyPressHandler(int keycode)
 /*++
   Purpose:
 
@@ -56,94 +54,95 @@ PAL_KeyPressHandler(
 
 --*/
 {
-	switch (keycode)
-	{
+    switch (keycode) {
 
-	case K_UP:
-		g_InputState.prevdir = (gpGlobals->fInBattle ? kDirUnknown : g_InputState.dir);
-		g_InputState.dir = kDirNorth;
-		g_InputState.dwKeyPress |= kKeyUp;
-		break;
+    case K_UP:
+        g_InputState.prevdir =
+            (gpGlobals->fInBattle ? kDirUnknown : g_InputState.dir);
+        g_InputState.dir = kDirNorth;
+        g_InputState.dwKeyPress |= kKeyUp;
+        break;
 
-	case K_DOWN:
-		g_InputState.prevdir = (gpGlobals->fInBattle ? kDirUnknown : g_InputState.dir);
-		g_InputState.dir = kDirSouth;
-		g_InputState.dwKeyPress |= kKeyDown;
-		break;
+    case K_DOWN:
+        g_InputState.prevdir =
+            (gpGlobals->fInBattle ? kDirUnknown : g_InputState.dir);
+        g_InputState.dir = kDirSouth;
+        g_InputState.dwKeyPress |= kKeyDown;
+        break;
 
-	case K_LEFT:
-		g_InputState.prevdir = (gpGlobals->fInBattle ? kDirUnknown : g_InputState.dir);
-		g_InputState.dir = kDirWest;
-		g_InputState.dwKeyPress |= kKeyLeft;
-		break;
+    case K_LEFT:
+        g_InputState.prevdir =
+            (gpGlobals->fInBattle ? kDirUnknown : g_InputState.dir);
+        g_InputState.dir = kDirWest;
+        g_InputState.dwKeyPress |= kKeyLeft;
+        break;
 
-	case K_RIGHT:
-		g_InputState.prevdir = (gpGlobals->fInBattle ? kDirUnknown : g_InputState.dir);
-		g_InputState.dir = kDirEast;
-		g_InputState.dwKeyPress |= kKeyRight;
-		break;
+    case K_RIGHT:
+        g_InputState.prevdir =
+            (gpGlobals->fInBattle ? kDirUnknown : g_InputState.dir);
+        g_InputState.dir = kDirEast;
+        g_InputState.dwKeyPress |= kKeyRight;
+        break;
 
-	case K_ESCAPE:
-		g_InputState.dwKeyPress |= kKeyMenu;
-		break;
+    case K_ESCAPE:
+        g_InputState.dwKeyPress |= kKeyMenu;
+        break;
 
-	case K_RETURN:
-	case K_SPACE:
-		g_InputState.dwKeyPress |= kKeySearch;
-		break;
+    case K_RETURN:
+    case K_SPACE:
+        g_InputState.dwKeyPress |= kKeySearch;
+        break;
 
-	case K_PAGEUP:
-		g_InputState.dwKeyPress |= kKeyPgUp;
-		break;
+    case K_PAGEUP:
+        g_InputState.dwKeyPress |= kKeyPgUp;
+        break;
 
-	case K_PAGEDOWN:
-		g_InputState.dwKeyPress |= kKeyPgDn;
-		break;
+    case K_PAGEDOWN:
+        g_InputState.dwKeyPress |= kKeyPgDn;
+        break;
 
-	case K_r:
-		g_InputState.dwKeyPress |= kKeyRepeat;
-		break;
+    case K_r:
+        g_InputState.dwKeyPress |= kKeyRepeat;
+        break;
 
-	case K_a:
-		g_InputState.dwKeyPress |= kKeyAuto;
-		break;
+    case K_a:
+        g_InputState.dwKeyPress |= kKeyAuto;
+        break;
 
-	case K_d:
-		g_InputState.dwKeyPress |= kKeyDefend;
-		break;
+    case K_d:
+        g_InputState.dwKeyPress |= kKeyDefend;
+        break;
 
-	case K_e:
-		g_InputState.dwKeyPress |= kKeyUseItem;
-		break;
+    case K_e:
+        g_InputState.dwKeyPress |= kKeyUseItem;
+        break;
 
-	case K_w:
-		g_InputState.dwKeyPress |= kKeyThrowItem;
-		break;
+    case K_w:
+        g_InputState.dwKeyPress |= kKeyThrowItem;
+        break;
 
-	case K_q:
-		g_InputState.dwKeyPress |= kKeyFlee;
-		break;
+    case K_q:
+        g_InputState.dwKeyPress |= kKeyFlee;
+        break;
 
-	case K_s:
-		g_InputState.dwKeyPress |= kKeyStatus;
-		break;
+    case K_s:
+        g_InputState.dwKeyPress |= kKeyStatus;
+        break;
 
-	case K_f:
-		g_InputState.dwKeyPress |= kKeyForce;
-		break;
+    case K_f:
+        g_InputState.dwKeyPress |= kKeyForce;
+        break;
 
-	case K_p:
-		VIDEO_SaveScreenshot();
-		break;
+    case K_p:
+        VIDEO_SaveScreenshot();
+        break;
 
-	default:
-		break;
-	}
+    default:
+        break;
+    }
 }
 
-static VOID
-PAL_KeyReleaseHandler(
-	int keycode)
+static VOID PAL_KeyReleaseHandler(int keycode)
 /*++
   Purpose:
 
@@ -159,48 +158,41 @@ PAL_KeyReleaseHandler(
 
 --*/
 {
-	switch (keycode)
-	{
-	case K_UP:
-		if (g_InputState.dir == kDirNorth)
-		{
-			g_InputState.dir = g_InputState.prevdir;
-		}
-		g_InputState.prevdir = kDirUnknown;
-		break;
+    switch (keycode) {
+    case K_UP:
+        if (g_InputState.dir == kDirNorth) {
+            g_InputState.dir = g_InputState.prevdir;
+        }
+        g_InputState.prevdir = kDirUnknown;
+        break;
 
-	case K_DOWN:
-		if (g_InputState.dir == kDirSouth)
-		{
-			g_InputState.dir = g_InputState.prevdir;
-		}
-		g_InputState.prevdir = kDirUnknown;
-		break;
+    case K_DOWN:
+        if (g_InputState.dir == kDirSouth) {
+            g_InputState.dir = g_InputState.prevdir;
+        }
+        g_InputState.prevdir = kDirUnknown;
+        break;
 
-	case K_LEFT:
-		if (g_InputState.dir == kDirWest)
-		{
-			g_InputState.dir = g_InputState.prevdir;
-		}
-		g_InputState.prevdir = kDirUnknown;
-		break;
+    case K_LEFT:
+        if (g_InputState.dir == kDirWest) {
+            g_InputState.dir = g_InputState.prevdir;
+        }
+        g_InputState.prevdir = kDirUnknown;
+        break;
 
-	case K_RIGHT:
-		if (g_InputState.dir == kDirEast)
-		{
-			g_InputState.dir = g_InputState.prevdir;
-		}
-		g_InputState.prevdir = kDirUnknown;
-		break;
+    case K_RIGHT:
+        if (g_InputState.dir == kDirEast) {
+            g_InputState.dir = g_InputState.prevdir;
+        }
+        g_InputState.prevdir = kDirUnknown;
+        break;
 
-	default:
-		break;
-	}
+    default:
+        break;
+    }
 }
 
-VOID
-	PAL_ClearKeyState(
-		VOID)
+VOID PAL_ClearKeyState(VOID)
 /*++
   Purpose:
 
@@ -216,12 +208,10 @@ VOID
 
 --*/
 {
-	g_InputState.dwKeyPress = 0;
+    g_InputState.dwKeyPress = 0;
 }
 
-VOID
-	PAL_InitInput(
-		VOID)
+VOID PAL_InitInput(VOID)
 /*++
   Purpose:
 
@@ -237,28 +227,24 @@ VOID
 
 --*/
 {
-	memset((void *)&g_InputState, 0, sizeof(g_InputState));
-	g_InputState.dir = kDirUnknown;
-	g_InputState.prevdir = kDirUnknown;
+    memset((void *)&g_InputState, 0, sizeof(g_InputState));
+    g_InputState.dir = kDirUnknown;
+    g_InputState.prevdir = kDirUnknown;
 
 //
 // Check for joystick
 //
 #ifdef PAL_HAS_JOYSTICKS
-	if (SDL_NumJoysticks() > 0 && g_fUseJoystick)
-	{
-		g_pJoy = SDL_JoystickOpen(0);
-		if (g_pJoy != NULL)
-		{
-			SDL_JoystickEventState(SDL_ENABLE);
-		}
-	}
+    if (SDL_NumJoysticks() > 0 && g_fUseJoystick) {
+        g_pJoy = SDL_JoystickOpen(0);
+        if (g_pJoy != NULL) {
+            SDL_JoystickEventState(SDL_ENABLE);
+        }
+    }
 #endif
 }
 
-VOID
-	PAL_ShutdownInput(
-		VOID)
+VOID PAL_ShutdownInput(VOID)
 /*++
   Purpose:
 
@@ -276,25 +262,21 @@ VOID
 {
 #ifdef PAL_HAS_JOYSTICKS
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-	if (g_pJoy != NULL)
-	{
-		SDL_JoystickClose(g_pJoy);
-		g_pJoy = NULL;
-	}
+    if (g_pJoy != NULL) {
+        SDL_JoystickClose(g_pJoy);
+        g_pJoy = NULL;
+    }
 #else
-	if (SDL_JoystickOpened(0))
-	{
-		assert(g_pJoy != NULL);
-		SDL_JoystickClose(g_pJoy);
-		g_pJoy = NULL;
-	}
+    if (SDL_JoystickOpened(0)) {
+        assert(g_pJoy != NULL);
+        SDL_JoystickClose(g_pJoy);
+        g_pJoy = NULL;
+    }
 #endif
 #endif
 }
 
-VOID
-	PAL_ProcessEvent(
-		VOID)
+VOID PAL_ProcessEvent(VOID)
 /*++
   Purpose:
 
@@ -311,14 +293,13 @@ VOID
 --*/
 {
 #ifdef PAL_HAS_NATIVEMIDI
-	MIDI_CheckLoop();
+    MIDI_CheckLoop();
 #endif
-	while (PAL_PollEvent(NULL))
-		;
+    while (PAL_PollEvent(NULL))
+        ;
 }
 
-int PAL_PollEvent(
-	SDL_Event *event)
+int PAL_PollEvent(SDL_Event *event)
 /*++
   Purpose:
 
@@ -334,6 +315,6 @@ int PAL_PollEvent(
 
 --*/
 {
-	/* in qemupal, we only have keyboard event */
-	return process_keys(PAL_KeyPressHandler, PAL_KeyReleaseHandler);
+    /* in qemupal, we only have keyboard event */
+    return process_keys(PAL_KeyPressHandler, PAL_KeyReleaseHandler);
 }

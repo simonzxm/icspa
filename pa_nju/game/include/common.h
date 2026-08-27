@@ -1,11 +1,11 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
 
-#include "trap.h"
 #include "debug.h"
+#include "trap.h"
 
 typedef uint8_t bool;
 

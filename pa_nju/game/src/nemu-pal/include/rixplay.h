@@ -29,21 +29,13 @@
 extern "C" {
 #endif
 
-VOID RIX_FillBuffer(
-    LPBYTE stream,
-    INT len);
+VOID RIX_FillBuffer(LPBYTE stream, INT len);
 
-INT RIX_Init(
-    LPCSTR szFileName);
+INT RIX_Init(LPCSTR szFileName);
 
-VOID
-    RIX_Shutdown(
-        VOID);
+VOID RIX_Shutdown(VOID);
 
-VOID RIX_Play(
-    INT iNumRIX,
-    BOOL fLoop,
-    float flFadeTime);
+VOID RIX_Play(INT iNumRIX, BOOL fLoop, float flFadeTime);
 
 #ifdef __cplusplus
 }
