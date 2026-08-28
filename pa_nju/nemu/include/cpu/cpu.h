@@ -3,10 +3,10 @@
 
 // interface for cpu functions
 
+#include "nemu.h"
 #include "cpu/alu.h"
 #include "cpu/reg.h"
 #include "cpu/reg_fpu.h"
-#include "nemu.h"
 
 extern CPU_STATE cpu;
 

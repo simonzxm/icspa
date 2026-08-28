@@ -1,13 +1,13 @@
 #ifndef __INSTRUCTIONS_H__
 #define __INSTRUCTIONS_H__
 
+#include "nemu.h"
 #include "cpu/cpu.h"
 #include "cpu/fpu.h"
+#include "cpu/operand.h"
 #include "cpu/instr_helper.h"
 #include "cpu/modrm.h"
-#include "cpu/operand.h"
 #include "memory/memory.h"
-#include "nemu.h"
 #include <cpu-ref/instr_ref.h>
 #include <stdio.h>
 
