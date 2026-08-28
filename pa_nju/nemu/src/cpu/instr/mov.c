@@ -6,16 +6,20 @@ static void instr_execute_2op() {
     operand_write(&opr_dest);
 }
 
-make_instr_impl_2op(mov, r, rm, b) make_instr_impl_2op(mov, r, rm, v)
-    make_instr_impl_2op(mov, rm, r, b) make_instr_impl_2op(mov, rm, r, v)
-        make_instr_impl_2op(mov, i, rm, b) make_instr_impl_2op(mov, i, rm, v)
-            make_instr_impl_2op(mov, i, r, b) make_instr_impl_2op(mov, i, r, v)
-                make_instr_impl_2op(mov, a, o, b)
-                    make_instr_impl_2op(mov, a, o, v)
-                        make_instr_impl_2op(mov, o, a, b)
-                            make_instr_impl_2op(mov, o, a, v)
+make_instr_impl_2op(mov, r, rm, b);
+make_instr_impl_2op(mov, r, rm, v);
+make_instr_impl_2op(mov, rm, r, b);
+make_instr_impl_2op(mov, rm, r, v);
+make_instr_impl_2op(mov, i, rm, b);
+make_instr_impl_2op(mov, i, rm, v);
+make_instr_impl_2op(mov, i, r, b);
+make_instr_impl_2op(mov, i, r, v);
+make_instr_impl_2op(mov, a, o, b);
+make_instr_impl_2op(mov, a, o, v);
+make_instr_impl_2op(mov, o, a, b);
+make_instr_impl_2op(mov, o, a, v);
 
-                                make_instr_func(mov_zrm82r_v) {
+make_instr_func(mov_zrm82r_v) {
     int len = 1;
     OPERAND r, rm;
     r.data_size = data_size;
