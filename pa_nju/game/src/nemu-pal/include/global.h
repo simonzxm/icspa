@@ -507,7 +507,7 @@ typedef struct tagGLOBALVARS {
     WORD wLastUnequippedItem; // last unequipped item
 
     PLAYERROLES
-        rgEquipmentEffect[MAX_PLAYER_EQUIPMENTS + 1];  // equipment effects
+    rgEquipmentEffect[MAX_PLAYER_EQUIPMENTS + 1];      // equipment effects
     WORD rgPlayerStatus[MAX_PLAYER_ROLES][kStatusAll]; // player status
 
     PAL_POS viewport; // viewport coordination
