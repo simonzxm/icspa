@@ -9,7 +9,7 @@
 *.obj
 *.elf
 *.img
-scripts/score_testcases/
+!scripts/score_testcases/
 !kernel/src/memory/mm_malloc.o
 #!scripts/score_testcases/30000/*.img
 
